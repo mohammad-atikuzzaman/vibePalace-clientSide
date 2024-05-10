@@ -1,13 +1,9 @@
 function App() {
-
   return (
     <>
-     hellp world form client side
-     <p>
-      this is client side app jsx
-     </p>
+      <h1 className="text-3xl font-bold underline text-red-500">Hello world!</h1>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
