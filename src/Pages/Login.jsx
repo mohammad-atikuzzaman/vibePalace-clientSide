@@ -3,10 +3,11 @@ import { FaEye } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContextComponent";
 import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { logInWithEmailPass } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { logInWithEmailPass, logInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [toglePass, setTogglePass] = useState(true);
   const handleToggle = () => {
     setTogglePass(!toglePass);
@@ -19,19 +20,29 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    logInWithEmailPass(
-      email,
-      password
-        .then(() => {
-          setLoginError("");
-          toast.success("Login Successful");
-          navigate("/")
-          
-        })
-        .catch((err) => {
-          setLoginError(err.message.split(":")[1]);
-        })
-    );
+    logInWithEmailPass(email, password)
+      .then(() => {
+        setLoginError("");
+        toast.success("Login Successful");
+        navigate("/");
+      })
+      .catch(() => {
+        setLoginError("Please Check your Email/password");
+        toast.error("Please Check your Email/password");
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    logInWithGoogle()
+      .then(() => {
+        // setLoginError("");
+        toast.success("Login Successful");
+        navigate("/");
+      })
+      .catch(() => {
+        setLoginError("Some thing wrong");
+        toast.error("Some thing wrong");
+      });
   };
   return (
     <div className="flex justify-center items-center">
@@ -85,16 +96,27 @@ const Login = () => {
                 className="w-full px-8 py-3 font-semibold rounded-md bg-violet-600"
               />
             </div>
-            <p>{loginError}</p>
+
+            <p className="text-red-500">{loginError}</p>
             <p className="px-6 text-sm text-center text-blue-600">
               Don't have an account yet?
-              <Link to="/register" className="hover:underline text-violet-600">
+              <Link
+                to="/register"
+                className="hover:underline text-violet-600 font-bold">
                 Sign up
               </Link>
               .
             </p>
           </div>
         </form>
+        <div className="flex  justify-center items-center my-4">
+          <button
+            onClick={handleGoogleLogin}
+            className="btn btn-outline btn-info text-xl">
+            <FcGoogle className="text-3xl" />
+            Log In with Google
+          </button>
+        </div>
       </div>
     </div>
   );

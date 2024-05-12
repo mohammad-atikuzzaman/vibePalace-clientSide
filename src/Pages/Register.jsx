@@ -7,8 +7,11 @@ import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { registerWithEmailPass, logInWithGoogle, updateUserProfile } =
-    useContext(AuthContext);
+  const {
+    registerWithEmailPass,
+    logInWithGoogle,
+    updateUserProfile,
+  } = useContext(AuthContext);
 
   const [toglePass, setTogglePass] = useState(true);
   const handleToggle = () => {
@@ -167,16 +170,16 @@ const Register = () => {
             </Link>
             .
           </p>
-          <div className="flex  justify-center items-center">
-            <button
-              onClick={handleGoogleLogin}
-              className="btn btn-outline btn-info text-xl">
-              <FcGoogle className="text-3xl" />
-              Log In with Google
-            </button>
-          </div>
         </div>
       </form>
+      <div className="flex  justify-center items-center my-4">
+        <button
+          onClick={handleGoogleLogin}
+          className="btn btn-outline btn-info text-xl">
+          <FcGoogle className="text-3xl" />
+          Log In with Google
+        </button>
+      </div>
     </div>
   );
 };
