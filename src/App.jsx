@@ -1,13 +1,19 @@
-import { FaBeer } from "react-icons/fa";
+import { Outlet } from "react-router-dom";
+import NavBar from "./Components/NavBar";
+import Footer from "./Components/Footer";
+import { ToastContainer} from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-red-500">
-        Hello world!
-      </h1>
-      <FaBeer />
-      <button className="btn btn-primary">button</button>
+      <NavBar></NavBar>
+      <div className="max-w-screen-xl mx-auto px-3 lg:px-0">
+        <Outlet></Outlet>
+      </div>
+      <Footer></Footer>
+      <ToastContainer />
     </>
   );
 }
