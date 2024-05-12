@@ -1,6 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthContextComponent";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut()
+      .then(() => toast.success("Signed Out"))
+      .catch((error) => toast.error(error.message));
+  };
   return (
     <div className="bg-blue-300">
       <div className="navbar max-w-screen-xl mx-auto">
@@ -65,9 +74,48 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login" className="btn btn-outline btn-primary">
-            Sign In
-          </Link>
+          {user ? (
+            <div className="flex  items-center gap-2">
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img
+                      alt="Tailwind CSS Navbar component"
+                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                  <li>
+                    <a className="justify-between">
+                      Profile
+                      <span className="badge">New</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>Settings</a>
+                  </li>
+                  <li>
+                    <a>Logout</a>
+                  </li>
+                </ul>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="btn btn-outline btn-error">
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link to="/login" className="btn btn-outline btn-primary">
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
     </div>

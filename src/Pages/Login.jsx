@@ -1,19 +1,37 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthContextComponent";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const { logInWithEmailPass } = useContext(AuthContext);
+  const navigate = useNavigate()
   const [toglePass, setTogglePass] = useState(true);
   const handleToggle = () => {
     setTogglePass(!toglePass);
   };
+
+  const [loginError, setLoginError] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    logInWithEmailPass(
+      email,
+      password
+        .then(() => {
+          setLoginError("");
+          toast.success("Login Successful");
+          navigate("/")
+          
+        })
+        .catch((err) => {
+          setLoginError(err.message.split(":")[1]);
+        })
+    );
   };
   return (
     <div className="flex justify-center items-center">
@@ -67,6 +85,7 @@ const Login = () => {
                 className="w-full px-8 py-3 font-semibold rounded-md bg-violet-600"
               />
             </div>
+            <p>{loginError}</p>
             <p className="px-6 text-sm text-center text-blue-600">
               Don't have an account yet?
               <Link to="/register" className="hover:underline text-violet-600">
