@@ -1,0 +1,56 @@
+[
+  {
+    "picture": "https://images.unsplash.com/photo-1512918580421-b2feee3b85a6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "This cozy single room offers a comfortable retreat with a view of the garden. It features a single bed, a small desk, and a chair. Perfect for solo travelers looking for a peaceful stay.",
+    "price_per_night": 50,
+    "room_size": "Single",
+    "availability": true,
+    "special_offers": "10% off for bookings over 7 nights",
+    "date": "2024-05-12"
+  },
+  {
+    "picture": "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "This spacious double room boasts a stylish design and comes with an ensuite bathroom. It features a comfortable double bed, a sitting area, and modern amenities. Ideal for couples or solo travelers seeking extra space and comfort.",
+    "price_per_night": 80,
+    "room_size": "Double",
+    "availability": true,
+    "special_offers": "",
+    "date": "2024-05-12"
+  },
+  {
+    "picture": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Indulge in luxury with this exquisite suite featuring a private balcony overlooking the city skyline. The suite includes a spacious bedroom with a king-size bed, a separate living area, and an elegant bathroom. Perfect for a romantic getaway or special occasion.",
+    "price_per_night": 150,
+    "room_size": "Suite",
+    "availability": true,
+    "special_offers": "Complimentary breakfast included",
+    "date": "2024-05-12"
+  },
+  {
+    "picture": "https://images.unsplash.com/photo-1596204976717-1a9ff47f74ef?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Escape to this charming rustic cabin nestled in nature. Featuring a cozy atmosphere with a fireplace, the cabin offers a comfortable queen-size bed, a kitchenette, and a private bathroom. Ideal for nature lovers seeking a peaceful retreat.",
+    "price_per_night": 120,
+    "room_size": "Cabin",
+    "availability": true,
+    "special_offers": "Free firewood included",
+    "date": "2024-05-12"
+  },
+  {
+    "picture": "https://images.unsplash.com/photo-1609766857120-0183863c7971?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Enjoy a family-friendly stay in this spacious suite equipped with bunk beds for the kids. The suite features a master bedroom with a queen-size bed, a separate living area, and a bathroom. Perfect for families traveling with children.",
+    "price_per_night": 200,
+    "room_size": "Family Suite",
+    "availability": true,
+    "special_offers": "Children under 12 stay for free",
+    "date": "2024-05-12"
+  },
+  {
+    "picture": "https://images.unsplash.com/photo-1566195992011-5f6b21e539aa?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Experience urban luxury in this elegant loft with modern design and city views. The loft offers a spacious living area, a fully equipped kitchen, a bedroom with a king-size bed, and a luxurious bathroom. Ideal for discerning travelers seeking sophistication and comfort.",
+    "price_per_night": 180,
+    "room_size": "Loft",
+    "availability": true,
+    "special_offers": "",
+    "date": "2024-05-12"
+  }
+]

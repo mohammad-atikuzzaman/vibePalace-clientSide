@@ -9,6 +9,10 @@ import Home from "./Pages/Home.jsx";
 import Login from "./Pages/Login.jsx";
 import Register from "./Pages/Register.jsx";
 import AuthContextComponent from "./Contexts/AuthContextComponent.jsx";
+import Rooms from "./Pages/Rooms.jsx";
+import Bookings from "./Pages/Bookings.jsx";
+import ProtectedRoute from "./PersonalPages/ProtectedRoute.jsx";
+import RoomShowDetails from "./Pages/RoomShowDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +32,22 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: "/rooms",
+        element: <Rooms></Rooms>,
+      },
+      {
+        path: "/bookings",
+        element: (
+          <ProtectedRoute>
+            <Bookings></Bookings>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/room/:id",
+        element: <RoomShowDetails></RoomShowDetails>
+      }
     ],
   },
 ]);

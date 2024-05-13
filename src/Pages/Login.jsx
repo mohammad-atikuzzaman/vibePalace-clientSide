@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContextComponent";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { logInWithEmailPass, logInWithGoogle } = useContext(AuthContext);
+  const location = useLocation();
+
   const navigate = useNavigate();
   const [toglePass, setTogglePass] = useState(true);
   const handleToggle = () => {
@@ -24,7 +26,7 @@ const Login = () => {
       .then(() => {
         setLoginError("");
         toast.success("Login Successful");
-        navigate("/");
+        navigate(location ? location?.state : "/");
       })
       .catch(() => {
         setLoginError("Please Check your Email/password");
@@ -37,7 +39,7 @@ const Login = () => {
       .then(() => {
         // setLoginError("");
         toast.success("Login Successful");
-        navigate("/");
+        navigate(location ? location?.state : "/");
       })
       .catch(() => {
         setLoginError("Some thing wrong");
