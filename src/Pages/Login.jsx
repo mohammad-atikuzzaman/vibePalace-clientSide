@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContextComponent";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { logInWithEmailPass, logInWithGoogle } = useContext(AuthContext);
@@ -56,6 +57,9 @@ const Login = () => {
   };
   return (
     <div className="flex justify-center items-center">
+      <Helmet>
+        <title>Vibe Palace | Login</title>
+      </Helmet>
       <div className="flex flex-col max-w-md p-6 bg-blue-300  border-4 my-4 rounded-lg sm:p-10 text-gray-100">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign in</h1>

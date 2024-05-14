@@ -5,6 +5,7 @@ import { AuthContext } from "../Contexts/AuthContextComponent";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import Review from "../Components/Review";
+import { Helmet } from "react-helmet";
 
 const RoomShowDetails = () => {
   const { user } = useContext(AuthContext);
@@ -125,6 +126,9 @@ const RoomShowDetails = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Vibe Palace | Room Details</title>
+      </Helmet>
       <div className="p-6 hover:scale-95 transition-all">
         <img src={picture} alt="" className=" rounded-xl shadow-md" />
       </div>

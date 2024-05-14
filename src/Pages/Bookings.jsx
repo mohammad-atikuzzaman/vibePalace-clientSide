@@ -4,6 +4,8 @@ import BookedRoom from "../Components/BookedRoom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Contexts/AuthContextComponent";
 
+import { Helmet } from "react-helmet";
+
 const Bookings = () => {
   const { user, setLoading } = useContext(AuthContext);
 
@@ -15,8 +17,8 @@ const Bookings = () => {
   const [bookingDate, setBookingDate] = useState("");
   const [localDateTime, setLocalDateTime] = useState("");
 
-  function stopLoading(){
-    setLoading(false)
+  function stopLoading() {
+    setLoading(false);
   }
 
   const handleDisplay = (roomsId, bookingDate) => {
@@ -33,9 +35,13 @@ const Bookings = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/myRooms/${user?.email}`, {withCredentials: true}).then((res) => {
-      setMyBookedRooms(res.data);
-    });
+    axios
+      .get(`http://localhost:4000/myRooms/${user?.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setMyBookedRooms(res.data);
+      });
   }, [user?.email]);
 
   const handleReview = (e) => {
@@ -51,7 +57,7 @@ const Bookings = () => {
     }
 
     const myReview = {
-      roomId:  reviewRoomId,
+      roomId: reviewRoomId,
       userName,
       rating,
       comment,
@@ -62,7 +68,7 @@ const Bookings = () => {
       .post(`http://localhost:4000/reviews`, myReview)
       .then((res) => {
         console.log(res.data);
-        toast.success("Review send successful")
+        toast.success("Review send successful");
       })
       .catch((err) => {
         console.log(err);
@@ -83,8 +89,8 @@ const Bookings = () => {
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           toast.success("Date has updateed");
-          setLoading(true)
-          setTimeout(stopLoading, 1000)
+          setLoading(true);
+          setTimeout(stopLoading, 1000);
         }
       })
       .catch((err) => {
@@ -93,9 +99,13 @@ const Bookings = () => {
   };
 
   // console.log(myBookedRooms)
-  if(myBookedRooms.length === 0){
+  if (myBookedRooms.length === 0) {
     return (
       <div className="w-full h-[calc(100vh-8rem)] flex items-center justify-center">
+        <Helmet>
+          <title>Vibe Palace | Bookings</title>
+        </Helmet>
+        ;
         <h2 className="font-bold text-3xl text-center">
           You Dont have any Bookings
         </h2>
@@ -104,7 +114,12 @@ const Bookings = () => {
   }
   return (
     <div className="relative">
-      <h2 className="font-black text-4xl text-blue-600 text-center py-6 border-b-2 border-dashed border-blue-300">My Bookings</h2>
+      <Helmet>
+        <title>Vibe Palace | Bookings</title>
+      </Helmet>
+      <h2 className="font-black text-4xl text-blue-600 text-center py-6 border-b-2 border-dashed border-blue-300">
+        My Bookings
+      </h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           <tbody>

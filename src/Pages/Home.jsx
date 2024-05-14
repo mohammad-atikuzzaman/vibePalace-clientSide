@@ -4,11 +4,15 @@ import FeatureRoom from "../Components/FeatureRoom";
 import Newsletter from "../Components/Newsletter";
 import Slider from "../Components/Slider";
 import UserReviews from "../Components/UserReviews";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     const [display, setDisplay] = useState(true);
   return (
     <div>
+      <Helmet>
+        <title>Vibe Palace | Home</title>
+      </Helmet>
       <Slider></Slider>
       <DisplayMap></DisplayMap>
       <Newsletter></Newsletter>

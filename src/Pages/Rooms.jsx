@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import RoomInRooms from "../Components/RoomInRooms";
+import { Helmet } from "react-helmet";
 
 const Rooms = () => {
   const [displayRooms, setDisplayRooms] = useState([]);
@@ -19,6 +20,9 @@ const Rooms = () => {
 
   return (
     <div className="my-6">
+      <Helmet>
+        <title>Vibe Palace | Rooms</title>
+      </Helmet>
       <h2 className="font-bold text-4xl text-blue-600 my-6 text-center">
         Rooms
       </h2>
@@ -33,9 +37,7 @@ const Rooms = () => {
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border-2">
             <li>
               <a className="bg-slate-500 text-white">
-                <button onClick={handleSort}>
-                  Price -low to high
-                </button>
+                <button onClick={handleSort}>Price -low to high</button>
               </a>
             </li>
           </ul>

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContextComponent";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -90,6 +91,9 @@ const Register = () => {
 
   return (
     <div className="flex flex-col max-w-md p-6 rounded-xl sm:p-10 bg-blue-300 my-6 border-4 text-gray-100 mx-auto">
+      <Helmet>
+        <title>Vibe Palace | Register</title>
+      </Helmet>
       <div className="mb-8 text-center">
         <h1 className="my-3 text-4xl font-bold">Register</h1>
         <p className="text-sm text-blue-600">
