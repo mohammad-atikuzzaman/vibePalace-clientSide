@@ -10,12 +10,9 @@ const ErrorElement = () => {
           className="rounded-full p-4 border-4 w-[70%]"
         />
         <p className="text-3xl">Sorry, we couldn't find this page.</p>
-        <p className="mt-4 mb-8 ">
-          But dont worry, you can find plenty of other things on our homepage.
-        </p>
         <Link
           to="/"
-          className="px-8 py-3 font-semibold rounded bg-blue-400 text-white">
+          className="px-8 py-3 font-semibold rounded bg-blue-900 text-white">
           Back to homepage
         </Link>
       </div>

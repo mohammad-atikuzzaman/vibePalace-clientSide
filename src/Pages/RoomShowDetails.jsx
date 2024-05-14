@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContextComponent";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import Review from "../Components/Review";
 
 const RoomShowDetails = () => {
   const { user } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const RoomShowDetails = () => {
   const navigate = useNavigate();
 
   const [displayAviliblity, setDisplayAvilibility] = useState("")
-  const [reviews, setReviews] = useState("")
+  const [reviews, setReviews] = useState([])
   const [roomInfo, setRoomInfo] = useState("");
   const [date, setDate]= useState("")
   const {
@@ -37,7 +38,7 @@ const RoomShowDetails = () => {
     });
   }, []);
 
-  console.log(reviews)
+  // console.log(reviews)
 
   const setBookingData = {
     _id,
@@ -100,6 +101,9 @@ const RoomShowDetails = () => {
  const handleDate =(e)=>{
   e.preventDefault()
   const cdate = e.target.date.value;
+  if(!cdate){
+    return toast.warn("please pick a date")
+  }
   setDate(cdate)
   toast.success("Date picked")
  }
@@ -153,9 +157,11 @@ const RoomShowDetails = () => {
       </div>
       <hr />
       <div>
-        <h2>Reviews: </h2>
-        <div>
-        
+        <h2 className="font-bold text-3xl text-blue-700 p-4 border-b-2 border-dashed border-blue-500">Reviews: {reviews.length}</h2>
+        <div className="grid md:grid-cols-2 gap-4 lg:grid-cols-3 my-4">
+            {
+              reviews.map(review => <Review key={review._id} review={review}></Review>)
+            }
         </div>
       </div>
     </div>

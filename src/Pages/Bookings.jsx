@@ -89,7 +89,7 @@ const Bookings = () => {
   // console.log(myBookedRooms)
   return (
     <div className="relative">
-      <h2>My Bookings</h2>
+      <h2 className="font-black text-4xl text-blue-600 text-center py-6 border-b-2 border-dashed border-blue-300">My Bookings</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           <tbody>

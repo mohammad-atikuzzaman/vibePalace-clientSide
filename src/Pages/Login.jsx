@@ -26,7 +26,11 @@ const Login = () => {
       .then(() => {
         setLoginError("");
         toast.success("Login Successful");
-        navigate(location ? location?.state : "/");
+        if (location?.state) {
+          navigate(location?.state);
+        } else {
+          navigate("/");
+        }
       })
       .catch(() => {
         setLoginError("Please Check your Email/password");
@@ -37,9 +41,13 @@ const Login = () => {
   const handleGoogleLogin = () => {
     logInWithGoogle()
       .then(() => {
-        // setLoginError("");
+        setLoginError("");
         toast.success("Login Successful");
-        navigate(location ? location?.state : "/");
+        if (location?.state) {
+          navigate(location?.state);
+        } else {
+          navigate("/");
+        }
       })
       .catch(() => {
         setLoginError("Some thing wrong");

@@ -1,11 +1,17 @@
+import { Link } from "react-router-dom";
+
 const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
   // console.log(handleDisplay);
-  // console.log(room.date);
+  // console.log(room);
 
   return (
     <tr>
       <td>
-        <img src={room.picture} alt="" className="w-44" />
+        <Link to={`/room/${room._id}`}>
+          <img src={room.picture} alt="" className="w-44 rounded-lg" />
+          <p className="font-semibold text-blue-600">Room Size : {room.room_size}</p>
+          <p>Price Per Night : {room.price_per_night}</p>
+        </Link>
       </td>
       <td>
         <button
