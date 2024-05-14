@@ -69,13 +69,13 @@ const RoomShowDetails = () => {
         title: "Are you sure?",
         html: `
         <hr/>
-        <h2>Room Size : ${room_size}</h2>
+        <h2>Price per night :$ ${price_per_night} USD</h2>
         <br/>
         <hr/>
-        <p>Special offer :  ${special_offers}</p>
+        <p>Date of booking :  ${date}</p>
         <br/>
         <hr/>
-        <p>Description :
+        <p>Room Description :
         <br/>
         ${description}</p>
         `,
@@ -83,7 +83,7 @@ const RoomShowDetails = () => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Book it!",
+        confirmButtonText: "Confirm, Book it!",
       }).then((result) => {
         if (result.isConfirmed) {
           axios

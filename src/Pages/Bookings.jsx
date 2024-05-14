@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../Contexts/AuthContextComponent";
 
 const Bookings = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setLoading } = useContext(AuthContext);
 
   const [myBookedRooms, setMyBookedRooms] = useState([]);
   const [display, setDisplay] = useState(false);
@@ -14,6 +14,10 @@ const Bookings = () => {
   const [reviewRoomId, setReviewRoomId] = useState("");
   const [bookingDate, setBookingDate] = useState("");
   const [localDateTime, setLocalDateTime] = useState("");
+
+  function stopLoading(){
+    setLoading(false)
+  }
 
   const handleDisplay = (roomsId, bookingDate) => {
     setDisplay(!display);
@@ -29,7 +33,7 @@ const Bookings = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/myRooms/${user?.email}`).then((res) => {
+    axios.get(`http://localhost:4000/myRooms/${user?.email}`, {withCredentials: true}).then((res) => {
       setMyBookedRooms(res.data);
     });
   }, [user?.email]);
@@ -79,6 +83,8 @@ const Bookings = () => {
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           toast.success("Date has updateed");
+          setLoading(true)
+          setTimeout(stopLoading, 1000)
         }
       })
       .catch((err) => {

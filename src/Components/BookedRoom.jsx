@@ -3,16 +3,25 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import moment from "moment";
 import { toast } from "react-toastify";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../Contexts/AuthContextComponent";
 
 const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
   // console.log(handleDisplay);
   // console.log(room.date);
 
+  const { setLoading } = useContext(AuthContext);
+  function stopLoading() {
+    setLoading(false);
+  }
+  // useEffect(() => {
+  //   setTimeout(stopLoading, 1000);
+  // }, []);
 
   const handleCancel = () => {
-      const date = moment(`${room.date}`, "YYYYMMDD").fromNow();
-      const subDate = parseInt(date.split(" ")[1]);
-      console.log(date,subDate)
+    const date = moment(`${room.date}`, "YYYYMMDD").fromNow();
+    const subDate = parseInt(date.split(" ")[1]);
+    console.log(date, subDate);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -23,7 +32,7 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        if(subDate >= 1){
+        if (subDate >= 1) {
           axios
             .delete(`http://localhost:4000/deleteBookings/${room._id}`)
             .then((res) => {
@@ -33,6 +42,7 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
                   text: "Your file has been deleted.",
                   icon: "success",
                 });
+                setLoading(true);
               }
             })
             .catch((err) => {
@@ -47,8 +57,10 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
               console.log(res);
             })
             .catch((err) => console.log(err));
-        }else{
-          toast.error("You can not cancel your booking")
+
+          setTimeout(stopLoading, 1000);
+        } else {
+          toast.error("You can not cancel your booking");
         }
       }
     });
