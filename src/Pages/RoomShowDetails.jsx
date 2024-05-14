@@ -3,15 +3,19 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContextComponent";
 import Swal from "sweetalert2";
-// import 'sweetalert2/src/sweetalert2.scss'
+import { toast } from "react-toastify";
 
 const RoomShowDetails = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [displayAviliblity, setDisplayAvilibility] = useState("")
+  const [reviews, setReviews] = useState("")
   const [roomInfo, setRoomInfo] = useState("");
+  const [date, setDate]= useState("")
   const {
+    _id,
     picture,
     description,
     price_per_night,
@@ -26,7 +30,17 @@ const RoomShowDetails = () => {
     });
   }, []);
 
+
+  useEffect(() => {
+    axios.get(`http://localhost:4000/reviews/${id}`).then((res) => {
+      setReviews(res.data);
+    });
+  }, []);
+
+  console.log(reviews)
+
   const setBookingData = {
+    _id,
     email: user?.email,
     name: user?.displayName,
     picture,
@@ -34,12 +48,16 @@ const RoomShowDetails = () => {
     price_per_night,
     room_size,
     special_offers,
+    date
   };
 
   // console.log(setBookingData);
   // console.log(roomInfo);
 
   const handleBooking = () => {
+    if(!date){
+      return toast.warn("Please pick a date and click on Confirm Date")
+    }
     if (user) {
       Swal.fire({
         title: "Are you sure?",
@@ -79,11 +97,16 @@ const RoomShowDetails = () => {
     }
   };
 
-
+ const handleDate =(e)=>{
+  e.preventDefault()
+  const cdate = e.target.date.value;
+  setDate(cdate)
+  toast.success("Date picked")
+ }
   return (
     <div>
       <div className="p-6 hover:scale-95 transition-all">
-        <img src={picture} alt="" className=" rounded-xl" />
+        <img src={picture} alt="" className=" rounded-xl shadow-md" />
       </div>
 
       <p className="font-semibold text-lg text-blue-600">{description}</p>
@@ -96,7 +119,7 @@ const RoomShowDetails = () => {
           </p>
         ) : (
           <p className="text-red-500 bg-blue-200 inline-block rounded-lg p-[2px]">
-            Unavailable
+            Booked
           </p>
         )}
       </div>
@@ -112,6 +135,14 @@ const RoomShowDetails = () => {
         )}
       </div>
 
+      <div className="bg-blue-200 inline-block p-2 rounded-xl">
+        <form onSubmit={handleDate} >
+          <input type="date" name="date" id="date" className="p-1 rounded-xl border-2" />
+
+          <input type="submit" className="btn ml-2 btn-success font-bold text-white" value="Confirm date" />
+        </form>
+      </div>
+
       <div>
         <button
           onClick={handleBooking}
@@ -123,6 +154,9 @@ const RoomShowDetails = () => {
       <hr />
       <div>
         <h2>Reviews: </h2>
+        <div>
+        
+        </div>
       </div>
     </div>
   );

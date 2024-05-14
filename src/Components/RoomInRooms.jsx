@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const RoomInRooms = ({room}) => {
-  console.log(room)
+  // console.log(room)
   return (
     <div className="card rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-all">
       <Link to={`/room/${room._id}`}>
