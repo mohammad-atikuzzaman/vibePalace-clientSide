@@ -7,6 +7,7 @@ const RoomInRooms = ({room}) => {
       <Link to={`/room/${room._id}`}>
         <img src={room.picture} alt="Shoes" className="w-full h-full"/>
       </Link>
+        <p>{room.price_per_night}</p>
     </div>
   );
 };

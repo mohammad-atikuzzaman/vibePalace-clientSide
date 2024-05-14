@@ -87,6 +87,15 @@ const Bookings = () => {
   };
 
   // console.log(myBookedRooms)
+  if(myBookedRooms.length === 0){
+    return (
+      <div className="w-full h-[calc(100vh-8rem)] flex items-center justify-center">
+        <h2 className="font-bold text-3xl text-center">
+          You Dont have any Bookings
+        </h2>
+      </div>
+    );
+  }
   return (
     <div className="relative">
       <h2 className="font-black text-4xl text-blue-600 text-center py-6 border-b-2 border-dashed border-blue-300">My Bookings</h2>
@@ -183,12 +192,12 @@ const Bookings = () => {
               <textarea
                 name="comment"
                 id="comment"
-                className="w-full p-1"
+                className="w-full p-1 rounded-lg"
                 placeholder="Your  Comment here"></textarea>
               <br />
               <input
                 type="submit"
-                value="Confirm update"
+                value="Send Feedback"
                 className="btn btn-outline btn-info"
               />
             </form>

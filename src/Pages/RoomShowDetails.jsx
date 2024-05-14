@@ -11,10 +11,10 @@ const RoomShowDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [displayAviliblity, setDisplayAvilibility] = useState("")
-  const [reviews, setReviews] = useState([])
+  const [displayAviliblity, setDisplayAvilibility] = useState("");
+  const [reviews, setReviews] = useState([]);
   const [roomInfo, setRoomInfo] = useState("");
-  const [date, setDate]= useState("")
+  const [date, setDate] = useState("");
   const {
     _id,
     picture,
@@ -27,10 +27,9 @@ const RoomShowDetails = () => {
   useEffect(() => {
     axios.get(`http://localhost:4000/room/${id}`).then((res) => {
       setRoomInfo(res.data);
-      setDisplayAvilibility(res.data.availability)
+      setDisplayAvilibility(res.data.availability);
     });
   }, []);
-
 
   useEffect(() => {
     axios.get(`http://localhost:4000/reviews/${id}`).then((res) => {
@@ -49,20 +48,37 @@ const RoomShowDetails = () => {
     price_per_night,
     room_size,
     special_offers,
-    date
+    date,
   };
 
   // console.log(setBookingData);
   // console.log(roomInfo);
 
+  // const sd = <>
+  //   <p>{room_size}</p>
+  //   <p>{special_offers}</p>
+  //   <p>{description}</p>
+  // </>
+
   const handleBooking = () => {
-    if(!date){
-      return toast.warn("Please pick a date and click on Confirm Date")
+    if (!date) {
+      return toast.warn("Please pick a date and click on Confirm Date");
     }
     if (user) {
       Swal.fire({
         title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        html: `
+        <hr/>
+        <h2>Room Size : ${room_size}</h2>
+        <br/>
+        <hr/>
+        <p>Special offer :  ${special_offers}</p>
+        <br/>
+        <hr/>
+        <p>Description :
+        <br/>
+        ${description}</p>
+        `,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -87,8 +103,8 @@ const RoomShowDetails = () => {
               availability: false,
             })
             .then((res) => {
-              setDisplayAvilibility(false)
-              console.log(res)
+              setDisplayAvilibility(false);
+              console.log(res);
             })
             .catch((err) => console.log(err));
         }
@@ -98,15 +114,15 @@ const RoomShowDetails = () => {
     }
   };
 
- const handleDate =(e)=>{
-  e.preventDefault()
-  const cdate = e.target.date.value;
-  if(!cdate){
-    return toast.warn("please pick a date")
-  }
-  setDate(cdate)
-  toast.success("Date picked")
- }
+  const handleDate = (e) => {
+    e.preventDefault();
+    const cdate = e.target.date.value;
+    if (!cdate) {
+      return toast.warn("please pick a date");
+    }
+    setDate(cdate);
+    toast.success("Date picked");
+  };
   return (
     <div>
       <div className="p-6 hover:scale-95 transition-all">
@@ -123,7 +139,7 @@ const RoomShowDetails = () => {
           </p>
         ) : (
           <p className="text-red-500 bg-blue-200 inline-block rounded-lg p-[2px]">
-            Booked
+            unavailable
           </p>
         )}
       </div>
@@ -140,10 +156,21 @@ const RoomShowDetails = () => {
       </div>
 
       <div className="bg-blue-200 inline-block p-2 rounded-xl">
-        <form onSubmit={handleDate} >
-          <input type="date" name="date" id="date" className="p-1 rounded-xl border-2" />
+        <form onSubmit={handleDate}>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            className="p-1 rounded-xl border-2"
+            disabled={!displayAviliblity}
+          />
 
-          <input type="submit" className="btn ml-2 btn-success font-bold text-white" value="Confirm date" />
+          <input
+            type="submit"
+            className="btn ml-2 btn-success font-bold text-white"
+            value="Confirm date"
+            disabled={!displayAviliblity}
+          />
         </form>
       </div>
 
@@ -157,11 +184,23 @@ const RoomShowDetails = () => {
       </div>
       <hr />
       <div>
-        <h2 className="font-bold text-3xl text-blue-700 p-4 border-b-2 border-dashed border-blue-500">Reviews: {reviews.length}</h2>
-        <div className="grid md:grid-cols-2 gap-4 lg:grid-cols-3 my-4">
-            {
-              reviews.map(review => <Review key={review._id} review={review}></Review>)
-            }
+        <h2 className="font-bold text-3xl text-blue-700 p-4 border-b-2 border-dashed border-blue-500">
+          Reviews: {reviews.length}
+        </h2>
+        <div>
+          {reviews.length === 0 ? (
+            <div className="w-full py-8 bg-blue-200 flex items-center justify-center my-4">
+              <h2 className="text-3xl font-bold text-center">
+                There are No review Available
+              </h2>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-4 lg:grid-cols-3 my-4">
+              {reviews.map((review) => (
+                <Review key={review._id} review={review}></Review>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
