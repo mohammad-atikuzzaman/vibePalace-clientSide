@@ -10,7 +10,7 @@ const FeatureRoom = () => {
     });
   }, []);
   return (
-    <div>
+    <div id="feature">
       <h2
         data-aos="fade-up"
         data-aos-offset="100"

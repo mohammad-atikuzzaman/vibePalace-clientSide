@@ -6,6 +6,7 @@ const AboutUs = () => {
       data-aos-delay="400"
       data-aos-duration="1000"
       data-aos-easing="ease-in-out"
+      id="about"
       className="my-6 bg-blue-100 p-4 rounded-xl">
       <h2
         data-aos="fade-up"

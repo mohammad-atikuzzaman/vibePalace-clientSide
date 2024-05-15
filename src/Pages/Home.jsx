@@ -10,6 +10,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import AboutUs from "../Components/AboutUs";
+import ContactUs from "../Components/ContactUs";
 AOS.init();
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
       <FeatureRoom></FeatureRoom>
       <UserReviews></UserReviews>
       <AboutUs></AboutUs>
+      <ContactUs></ContactUs>
 
 
 
