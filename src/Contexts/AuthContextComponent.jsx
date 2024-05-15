@@ -10,6 +10,11 @@ import {
 import { createContext, useEffect, useState } from "react";
 import auth from "../FireBase/firebase.init";
 import axios from "axios";
+import PropTypes from "prop-types";
+
+
+
+
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -94,5 +99,9 @@ const AuthContextComponent = ({ children }) => {
     <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
   );
 };
+
+AuthContextComponent.propTypes ={
+  children: PropTypes.object,
+}
 
 export default AuthContextComponent;

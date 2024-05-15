@@ -1,4 +1,4 @@
-
+import PropTypes from "prop-types";
 
 const Review = ({ review }) => {
   const { userName, rating, comment, time } = review;
@@ -27,5 +27,8 @@ const Review = ({ review }) => {
     </div>
   );
 };
+Review.propTypes ={
+  review: PropTypes.object,
+}
 
 export default Review;

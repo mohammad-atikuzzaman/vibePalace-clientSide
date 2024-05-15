@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import moment from "moment";
 import { toast } from "react-toastify";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContextComponent";
+import PropTypes from "prop-types";
 
 const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
   // console.log(handleDisplay);
@@ -14,9 +15,6 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
   function stopLoading() {
     setLoading(false);
   }
-  // useEffect(() => {
-  //   setTimeout(stopLoading, 1000);
-  // }, []);
 
   const handleCancel = () => {
     const date = moment(`${room.date}`, "YYYYMMDD").fromNow();
@@ -99,5 +97,11 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
     </tr>
   );
 };
+
+BookedRoom.propTypes ={
+  room: PropTypes.object,
+  handleDisplay: PropTypes.func,
+  handleDisplayReview: PropTypes.func,
+}
 
 export default BookedRoom;

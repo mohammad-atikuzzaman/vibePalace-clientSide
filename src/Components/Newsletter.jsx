@@ -21,7 +21,7 @@ const Newsletter = () => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
             className="text-xl">
-            🌟 Don't Miss Out! Subscribe for Updates, Deals & Exclusive Offers!
+            🌟 Dont Miss Out! Subscribe for Updates, Deals & Exclusive Offers!
             🌟
           </p>
           <h3

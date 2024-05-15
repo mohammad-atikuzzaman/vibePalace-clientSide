@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContextComponent";
 import { Navigate, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -21,4 +22,7 @@ const ProtectedRoute = ({ children }) => {
   return <Navigate to="/login" state={location.pathname}></Navigate>
 };
 
+ProtectedRoute.propTypes ={
+  children: PropTypes.object,
+}
 export default ProtectedRoute;

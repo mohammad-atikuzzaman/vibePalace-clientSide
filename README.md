@@ -13,6 +13,7 @@ https://vibe-palace.web.app/
 - react toastify
 - axios js
 - pigeon map
+- prop types
 - react helmet
 - aos 
 - moment js
