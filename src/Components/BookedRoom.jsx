@@ -27,7 +27,7 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, Cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
         if (subDate >= 1) {
@@ -36,8 +36,8 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
             .then((res) => {
               if (res.data.deletedCount) {
                 Swal.fire({
-                  title: "Deleted!",
-                  text: "Your file has been deleted.",
+                  title: "Canceled",
+                  text: "Your booking has been Canceled.",
                   icon: "success",
                 });
                 setLoading(true);
@@ -65,10 +65,10 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
   };
 
   return (
-    <tr>
-      <td>
+    <tr className="grid gap-3 my-4 grid-cols-4">
+      <td className="col-span-4 md:col-span-1">
         <Link to={`/room/${room._id}`}>
-          <img src={room.picture} alt="" className="w-44 rounded-lg" />
+          <img src={room.picture} alt="" className="md:w-44 rounded-lg" />
           <p className="font-semibold text-blue-600">
             Room Size : {room.room_size}
           </p>
@@ -98,10 +98,10 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
   );
 };
 
-BookedRoom.propTypes ={
+BookedRoom.propTypes = {
   room: PropTypes.object,
   handleDisplay: PropTypes.func,
   handleDisplayReview: PropTypes.func,
-}
+};
 
 export default BookedRoom;

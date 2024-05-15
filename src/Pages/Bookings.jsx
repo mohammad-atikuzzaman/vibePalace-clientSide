@@ -122,7 +122,7 @@ const Bookings = () => {
         My Bookings
       </h2>
       <div className="overflow-x-auto">
-        <table className="table table-zebra">
+        <table className="w-full">
           <tbody>
             {myBookedRooms.map((room) => (
               <BookedRoom
