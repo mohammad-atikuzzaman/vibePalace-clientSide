@@ -3,6 +3,8 @@
 ### the live link of vibe palace 
 https://vibe-palace.web.app/
 
+[https://vibe-palace.web.app/](Vibe Palace)
+
 ##In this project I have use  
 - React router dom
 - React icons
