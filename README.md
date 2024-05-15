@@ -24,5 +24,7 @@ https://vibe-palace.web.app/
 - user can book room by pick a booking date.
 - user can change booking date of their booked room
 - user can give review of their booked room
+- user can cancel a booking 1 day before the booked date.
+
 
 
