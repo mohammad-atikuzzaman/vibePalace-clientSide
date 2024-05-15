@@ -101,13 +101,13 @@ const NavBar = () => {
                       <li>
                         <a>{user?.email}</a>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link to="/update-profile" className="justify-between">
                           Update Profile
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
-                        <a onClick={handleLogout}>Logout</a>
+                        <a onClick={handleLogout} className="bg-red-300 hover:bg-red-500" >Logout</a>
                       </li>
                     </ul>
                   </div>

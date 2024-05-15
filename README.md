@@ -1,8 +1,28 @@
-# React + Vite
+# Vibe Palace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### the live link of vibe palace 
+https://vibe-palace.web.app/
 
-Currently, two official plugins are available:
+##In this project I have use  
+- React router dom
+- React icons
+- sweet alert 2
+- firebase
+- react toastify
+- axios js
+- pigeon map
+- react helmet
+- aos 
+- moment js
+- tailwind css
+- daisyui
+- mamba ui
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- user can register or login  by email, password or google account
+- user can book room by pick a booking date.
+- user can change booking date of their booked room
+- user can give review of their booked room
+
+
