@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const FeatureRoom = () => {
   const [rooms, setRooms] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:4000/rooms").then((res) => {
+    axios.get("https://vibepalace.vercel.app/rooms").then((res) => {
       setRooms(res.data);
     });
   }, []);

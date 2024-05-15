@@ -26,14 +26,14 @@ const RoomShowDetails = () => {
   } = roomInfo;
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/room/${id}`).then((res) => {
+    axios.get(`https://vibepalace.vercel.app/room/${id}`).then((res) => {
       setRoomInfo(res.data);
       setDisplayAvilibility(res.data.availability);
     });
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/reviews/${id}`).then((res) => {
+    axios.get(`https://vibepalace.vercel.app/reviews/${id}`).then((res) => {
       setReviews(res.data);
     });
   }, []);
@@ -88,7 +88,7 @@ const RoomShowDetails = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post("http://localhost:4000/bookings", setBookingData)
+            .post("https://vibepalace.vercel.app/bookings", setBookingData)
             .then((res) => {
               console.log(res.data);
               Swal.fire({
@@ -100,7 +100,7 @@ const RoomShowDetails = () => {
             .catch((err) => console.log(err));
 
           axios
-            .patch(`http://localhost:4000/bookRoom/${id}`, {
+            .patch(`https://vibepalace.vercel.app/bookRoom/${id}`, {
               availability: false,
             })
             .then((res) => {

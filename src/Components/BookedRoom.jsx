@@ -34,7 +34,7 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
       if (result.isConfirmed) {
         if (subDate >= 1) {
           axios
-            .delete(`http://localhost:4000/deleteBookings/${room._id}`)
+            .delete(`https://vibepalace.vercel.app/deleteBookings/${room._id}`)
             .then((res) => {
               if (res.data.deletedCount) {
                 Swal.fire({
@@ -50,7 +50,7 @@ const BookedRoom = ({ room, handleDisplay, handleDisplayReview }) => {
             });
 
           axios
-            .patch(`http://localhost:4000/bookRoom/${room._id}`, {
+            .patch(`https://vibepalace.vercel.app/bookRoom/${room._id}`, {
               availability: true,
             })
             .then((res) => {

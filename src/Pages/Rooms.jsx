@@ -7,13 +7,13 @@ const Rooms = () => {
   const [displayRooms, setDisplayRooms] = useState([]);
   // console.log(displayRooms)
   useEffect(() => {
-    axios.get("http://localhost:4000/rooms").then((res) => {
+    axios.get("https://vibepalace.vercel.app/rooms").then((res) => {
       setDisplayRooms(res.data);
     });
   }, []);
 
   const handleSort = () => {
-    axios.get("http://localhost:4000/roomsSort").then((res) => {
+    axios.get("https://vibepalace.vercel.app/roomsSort").then((res) => {
       setDisplayRooms(res.data);
     });
   };

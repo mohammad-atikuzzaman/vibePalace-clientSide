@@ -36,7 +36,7 @@ const Bookings = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/myRooms/${user?.email}`, {
+      .get(`https://vibepalace.vercel.app/myRooms/${user?.email}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -65,7 +65,7 @@ const Bookings = () => {
     };
 
     axios
-      .post(`http://localhost:4000/reviews`, myReview)
+      .post(`https://vibepalace.vercel.app/reviews`, myReview)
       .then((res) => {
         console.log(res.data);
         toast.success("Review send successful");
@@ -85,7 +85,9 @@ const Bookings = () => {
     }
 
     axios
-      .patch(`http://localhost:4000/updateDate/${roomId}`, { date: Udate })
+      .patch(`https://vibepalace.vercel.app/updateDate/${roomId}`, {
+        date: Udate,
+      })
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           toast.success("Date has updateed");

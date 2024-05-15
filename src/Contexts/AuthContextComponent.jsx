@@ -47,12 +47,10 @@ const AuthContextComponent = ({ children }) => {
       setUser(currentUser);
       const email = currentUser?.email || user?.email;
       const logedUser = { email };
-
       setLoading(false);
-
       if (currentUser) {
         axios
-          .post("http://localhost:4000/jwt", logedUser, {
+          .post("https://vibepalace.vercel.app/jwt", logedUser, {
             withCredentials: true,
           })
           .then((res) => {
@@ -63,7 +61,7 @@ const AuthContextComponent = ({ children }) => {
           .catch((err) => console.log(err));
       } else {
         axios
-          .post("http://localhost:4000/logout", logedUser, {
+          .post("https://vibepalace.vercel.app/logout", logedUser, {
             withCredentials: true,
           })
           .then((res) => {
