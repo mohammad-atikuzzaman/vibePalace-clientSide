@@ -107,7 +107,6 @@ const Bookings = () => {
         <Helmet>
           <title>Vibe Palace | Bookings</title>
         </Helmet>
-        ;
         <h2 className="font-bold text-3xl text-center">
           You Dont have any Bookings
         </h2>

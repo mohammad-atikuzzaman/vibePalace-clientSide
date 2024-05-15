@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
+import AboutUs from "../Components/AboutUs";
 AOS.init();
 
 const Home = () => {
@@ -24,6 +25,13 @@ const Home = () => {
       <Newsletter></Newsletter>
       <FeatureRoom></FeatureRoom>
       <UserReviews></UserReviews>
+      <AboutUs></AboutUs>
+
+
+
+
+
+
       <div className={display ? "block" : "hidden"}>
         <div className="w-full h-screen flex justify-center items-center bg-[#0a0a0a42] absolute top-0 left-0 z-10 ">
           <div className="w- lg:w-[40%] bg-white relative rounded-xl overflow-hidden">
