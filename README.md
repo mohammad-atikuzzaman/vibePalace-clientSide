@@ -22,6 +22,7 @@ https://vibe-palace.web.app/
 ## Features
 
 - User authontication system
+- Security enhanced by jwt
 - Authorized user can book avialable room by chosing a booking date.
 - User can change booking date of their booked room
 - User can give review of their booked room
