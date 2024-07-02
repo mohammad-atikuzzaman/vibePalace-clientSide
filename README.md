@@ -27,5 +27,6 @@ https://vibe-palace.web.app/
 - User can give review of their booked room
 - User can cancel a their booking 1 day before the booked date.
 
-
+### If any one want to clone this projet
+At first clone this project and run a this comand "npm i", then manage a firebase key for authentication and hosting. Then run this project by comand "npm run dev"
 
