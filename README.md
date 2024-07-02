@@ -1,5 +1,6 @@
 # Vibe Palace
 
+The Hotel room booking application. Only authorized user can book available room. They can cancel their booking before 1 day. Also they can update their booking date.
 ### Live link
 https://vibe-palace.web.app/
 
